@@ -4,9 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-//@AllArgsConstructor
-//@Data
-//@NoArgsConstructor
-//public class MovieDto {
-//
-//}
+@AllArgsConstructor
+@Data
+@NoArgsConstructor
+public class MovieDto {
+    private Long id;
+    private String name;
+}

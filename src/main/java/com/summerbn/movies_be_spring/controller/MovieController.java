@@ -1,6 +1,7 @@
 package com.summerbn.movies_be_spring.controller;
 
 import com.summerbn.movies_be_spring.entity.Movie;
+import com.summerbn.movies_be_spring.model.dto.MovieDto;
 import com.summerbn.movies_be_spring.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,9 +19,19 @@ public class MovieController {
     private MovieService movieService;
 
     @GetMapping("")
-    public ResponseEntity<List<Movie>> getAll(){
+    public ResponseEntity<?> getAll(){
 //        return new ResponseEntity<>(movieService.getAllMovie(),HttpStatus.OK);
         return ResponseEntity.ok(movieService.getAllMovie());
+    }
+
+    @GetMapping("/{value}")
+    public ResponseEntity<?> getVideoById(@PathVariable(value = "value") Long id){
+        return ResponseEntity.ok(movieService.getMovieById(id));
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<?> searchMovie(@RequestParam(value = "keyword",required = false, defaultValue = "") String name){
+        return ResponseEntity.ok(movieService.searchMovie(name));
     }
 
     @PostMapping("/movie")
