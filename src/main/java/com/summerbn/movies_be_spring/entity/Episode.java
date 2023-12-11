@@ -1,4 +1,4 @@
-package com.summerbn.movies_be_spring.model;
+package com.summerbn.movies_be_spring.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -13,13 +13,12 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Episode {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private String title;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "part_id", nullable = false)
     private Part part;
 

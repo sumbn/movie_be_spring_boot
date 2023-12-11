@@ -1,32 +1,40 @@
 package com.summerbn.movies_be_spring.controller;
 
-import com.summerbn.movies_be_spring.model.Movie;
+import com.summerbn.movies_be_spring.entity.Movie;
 import com.summerbn.movies_be_spring.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/v1/")
+@RequestMapping("/v1/movies")
 public class MovieController {
 
     @Autowired
     private MovieService movieService;
 
-    @GetMapping("/list-movie")
+    @GetMapping("")
     public ResponseEntity<List<Movie>> getAll(){
-        return new ResponseEntity<>(movieService.getAllMovie(),HttpStatus.OK);
+//        return new ResponseEntity<>(movieService.getAllMovie(),HttpStatus.OK);
+        return ResponseEntity.ok(movieService.getAllMovie());
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Optional<Movie>> getItem(@PathVariable Long id){
-        return new ResponseEntity<>(movieService.getMovieById(id),HttpStatus.OK);
+    @PostMapping("/movie")
+    public ResponseEntity<?> createVideo(){
+        return null;
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<?> updateVideo(){
+        return null;
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteVideo(){
+        return null;
     }
 }
