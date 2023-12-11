@@ -1,4 +1,4 @@
-package com.summerbn.movies_be_spring.model;
+package com.summerbn.movies_be_spring.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
